@@ -1,0 +1,13 @@
+---
+- name: playbook 
+  hosts: webserver
+  become: yes
+  tasks:
+  - name: i want to install wget
+    apt: 
+      name: get
+      state: present
+  - name: i want to install apache
+    apt: 
+      name: apache
+      state: latest
