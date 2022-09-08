@@ -11,7 +11,9 @@
     apt: 
       name: "{{mywebserverpackubuntu}}"
       state: latest
+    when: ansible_os_family=="Ubuntu"
   - name: i want to install httpd
     yum: 
       name: "{{mywebserverpackredhat}}"
       state: latest
+    when: ansible_os_family=="RedHat"
