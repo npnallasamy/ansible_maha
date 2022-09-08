@@ -1,0 +1,5 @@
+---
+myjavapackonubuntu : openjdk-8-jre
+myjavapackonredhat : openjdk-11-jre
+mywebserverpackubuntu : apache2
+mywebserverpackonredhat : httpd
