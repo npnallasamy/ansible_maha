@@ -9,5 +9,9 @@
       state: present
   - name: i want to install apache
     apt: 
-      name: apache
+      name: "{{mywebserverpackubuntu}}"
+      state: latest
+  - name: i want to install httpd
+    yum: 
+      name: "{{mywebserverpackredhat}}"
       state: latest
