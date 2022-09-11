@@ -1,0 +1,31 @@
+---
+- hosts: all
+  name: 
+  become: yes
+  tasks:
+  - name: install webserver httpd
+    yum:
+      name: httpd
+      state: present
+    when: ansible_os_family="RedHat"
+    ignore_errors: yes
+    notify: starthttpd
+
+  - name: install webserver apache
+    apt:
+      name: apache2
+      statee: present
+    when: ansible_os_family="Debian"
+    ignore_errors: yes
+    notify: startapache
+  
+  handlers:
+  - name: starthttpd
+    service: 
+      name: httpd
+      state: started
+  
+  - name: startapache
+    service:
+      name: apache2
+      state: started
