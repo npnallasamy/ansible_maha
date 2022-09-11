@@ -1,5 +1,6 @@
 ---
 - hosts: all
+  name: 
   become: yes
   tasks:
   - name: install webserver httpd
@@ -8,7 +9,7 @@
       state: present
     when: ansible_os_family="RedHat"
     ignore_errors: no
-    
+    notify: starthttpd
 
   - name: install webserver apache
     apt:
@@ -16,7 +17,17 @@
       state: present
     when: ansible_os_family="Debian"
     ignore_errors: no
-    
+    notify: startapache
   
+  handlers:
+  - name: starthttpd
+    service: 
+      name: httpd
+      state: started
+    when: ansible_os_family="RedHat"
   
-  
+  - name: startapache
+    service:
+      name: apache2
+      state: started
+    when: ansible_os_family="Debian"
